@@ -1,0 +1,143 @@
+<?php
+/**
+ * @file
+ * Implements MTech custom module
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_mtech_form_alter(&$form, &$form_state, $form_id) {
+  // Intentionally left blank.
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function custom_mtech_form_contact_site_form_alter(&$form, &$form_state, $form_id) {
+  $form['cid']['#access'] = FALSE;
+  $form['copy']['#access'] = FALSE;
+  $form['copy']['#default_value'] = TRUE;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function custom_mtech_block_info() {
+  $blocks = array() ;
+
+  $blocks['advertisement'] = array(
+      'info' => t('Advertisement'),
+      'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['copyright'] = array(
+    'info' => t('Copyright'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function custom_mtech_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'advertisement':
+      $block = _custom_mtech_block_advertisement();
+      break;
+
+    case 'copyright':
+      $block = _custom_mtech_block_copyright();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_block_view_MODULE_DELTA_alter().
+ */
+function custom_mtech_block_view_nice_menus_1_alter(&$data, $block) {
+  $block->title = '<none>';
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function custom_mtech_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'custom_mtech') . '/views',
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function custom_mtech_ctools_plugin_api($module, $api) {
+  if ($module == 'context' && $api == 'context') {
+    return array(
+      'version' => 3,
+      'path' => drupal_get_path('module', 'custom_mtech') . '/contexts',
+    );
+  }
+  if ($module == 'views' && $api == 'views_default') {
+    return array(
+      'version' => 2,
+      'path' => drupal_get_path('module', 'custom_mtech') . '/views',
+    );
+  }
+}
+
+/**
+ * Block implementation of 'advertisement'.
+ */
+function _custom_mtech_block_advertisement() {
+  $text = t('MTech provides Drupal related services.  Please contact us at (314)-372-9819 or via !contact.',
+    array('!contact' => l('email', 'contact'))
+  );
+  $render['block'] = array(
+    '#type' => 'markup',
+    '#markup' => '<div class="advertisement"><p>' . $text . '</p></div>',
+  );
+  $render['image'] = array(
+    '#theme' => 'image',
+    '#path' => drupal_get_path('theme', 'mtech_theme') . '/logo-medium.png',
+    '#alt' => 'MTech',
+    '#title' => 'MTech',
+    '#attributes' => array('class' => array('branding-logo')),
+  );
+
+  $block['subject'] = t('Expert Drupal Development');
+  $block['content'] = $render;
+
+  return $block;
+}
+
+/**
+ * Block implementation of 'copyright'.
+ */
+function _custom_mtech_block_copyright() {
+  $year = '2013';
+  $currentYear = date('Y', REQUEST_TIME);
+  // Show something like 2013 - 2014, if not current year.
+  if ($year != $currentYear) {
+    $spacer = ' - ';
+    $year .= $spacer . $currentYear;
+  }
+  else {
+    // Show only the current year.
+    $year = $currentYear;
+  }
+
+  $holder = 'MTech, LLC';
+
+  $copyright_text = $year . ' ' . $holder;
+
+  // Create the block.
+  $block['subject'] = t('Copyright');
+  $block['content'] = '<div class="copyright">&copy; ' . $copyright_text . '</div>';
+
+  return $block;
+}

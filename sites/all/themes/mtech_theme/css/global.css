@@ -1,0 +1,162 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+html {
+  font-family: "MuseoSans",Century Gothic,Apple Gothic,sans-serif 
+}
+article {
+  padding: 0 15px;
+}
+section#block-custom-mtech-advertisement {
+  margin: 20px;
+  padding: 12px 20px;
+  background: #B0BBBB;
+  border: solid 1px #DDD;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+section#block-custom-mtech-advertisement h2 {
+  text-align: center;
+}
+section#block-custom-mtech-advertisement .advertisement {
+  padding: 10px;
+  font-size: 20px;
+}
+section#block-custom-mtech-advertisement a:link, section#block-custom-mtech-advertisement a:visited {
+  color: black;
+}
+a:link, a:visited {
+  outline: none;
+  color: #11AEA6;
+  text-decoration: none;
+  -webkit-tap-highlight-color: #c9f6fe;
+}
+a:hover {
+  outline: none;
+  color: #FF7E0E;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+a:active, a:focus {
+  outline: none;
+  color: #FF7E0E;
+}
+::selection {
+  background: #C9F6FE;
+  text-shadow: none;
+}
+#section-header {
+  margin: 6px 0 0;
+  border-bottom: 1px solid #CFCFCF;
+}
+#zone-user {
+  padding: 2px 0;
+}
+#region-user-first ul.nice-menu li {
+  background: white;
+  border: none;
+  width: 100px;
+}
+#region-user-first ul.nice-menu a {
+  font-size: 1em;
+  font-weight: 500;
+  text-align: center;
+  color: #839FA5;
+  padding: 10px 0;
+  border: 1px solid white;
+  border-bottom-style: none;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+
+}
+#region-user-first ul.nice-menu a:hover {
+  background: #EFEFEF;
+  border: 1px solid #CFCFCF;
+  border-bottom-style: none;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+#region-user-first ul li.menu-path-front a,
+#region-user-first ul li.menu-path-front a:hover {
+  background: none;
+  border: none;
+}
+#region-user-first ul li.menu-path-front {
+  height: 30px;
+  background: url('/sites/all/themes/mtech_theme/logo-xsmall.png') no-repeat center;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#section-content {
+  color: #383838;
+}
+#zone-content-wrapper {
+  background-color: #EFEFEF;
+}
+#region-sidebar-first {
+  border: 1px solid #CFCFCF;
+  border-bottom-style: none;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+#region-content, #region-sidebar-second {
+  background-color: white;
+  border-right: 1px solid #CFCFCF;
+  border-left: 1px solid #CFCFCF;
+}
+#region-content, #region-sidebar-first, #region-sidebar-second, #region-footer-second {
+  padding: 0 0 5px 5px;
+}
+#section-footer {
+  padding: 15px 0 0;
+  border-top: 1px solid #CFCFCF;
+}
+div.view-blog .views-field {
+  margin: 10px 0;
+  font-size: 1.6em;
+}
+div.view-blog .views-field-field-bio {
+  font-size: 1em;
+}
+div.view-blog .views-field-nothing {
+  font-size: 1em;
+}
+div.blog-author {
+  font-size: 1.3em;
+}
+div.drupal-gist-file {
+  overflow: auto;
+  width: auto;
+  max-height: 600px;
+  white-space: nowrap;
+  margin: 12px 0;
+  padding: 12px 20px;
+  background: #F0F0F0;
+  border: solid 1px #DDD;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+div.field-name-ds-user-picture img, div.views-field-picture img {
+  padding: 15px 20px;
+}
+img.branding-logo {
+  padding: 8px;
+}
+div.username {
+  font-size: 1.6em;
+  font-weight: 500;
+}
+div.field-name-field-employee-role {
+  font-size: 1.3em;
+  font-weight: 450;
+}
+div.view-staff table.views-view-grid {
+  width: 99%;
+}

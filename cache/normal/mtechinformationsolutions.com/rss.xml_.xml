@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base="http://mtechinformationsolutions.com"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+ <title>MTech</title>
+ <link>http://mtechinformationsolutions.com</link>
+ <description></description>
+ <language>en</language>
+<item>
+ <title>Git Skinny</title>
+ <link>http://mtechinformationsolutions.com/blogs/lucas-hedding/git-skinny</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;I like Git way better than all the alternatives. I learn more things about it all the time. Even today, I wondered if there was an easier way to create nicely named patches automatically; and there is. Here&#039;s a run down of the more common tips and tricks I&#039;ve learned.&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;
+&lt;pre&gt;git init .&lt;/pre&gt;&lt;p&gt; Create a git repo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;git add .&lt;/pre&gt;&lt;p&gt; (Adds all files recursively into git.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;git add -u&lt;/pre&gt;&lt;p&gt; (only adds or &quot;stages&quot; removed/changed files.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;git commit -m &quot;Commit message&quot;&lt;/pre&gt;&lt;p&gt; I tend to use double quotes so I&#039;m able to use contractions in the commit message.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;git commit --amend&lt;/pre&gt;&lt;p&gt; Adds more changes to the most recent commit. Use if you haven&#039;t pushed yet and missed a couple files or changes in the last commit.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;git rebase&lt;/pre&gt;&lt;p&gt; Stages all the changes at the tip of HEAD.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;git rebase -i&lt;/pre&gt;&lt;p&gt; Interactive rebase to allow for picking and choosing what to pull to the HEAD and re-arrange into multiple commits that make more sense.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;git apply --index&lt;/pre&gt;&lt;p&gt; Applys a patch and stages all newly created files to the index so you don’t “miss” committing a file.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;.gitignore&lt;/pre&gt;&lt;p&gt; All files and paths mentioned in here are ignored by git.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;pre&gt;gitk&lt;/pre&gt;&lt;p&gt; UI on Linux/Mac for viewing and searching the tree.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Common git aliases (from ~/.gitconfig):&lt;/p&gt;
+&lt;pre&gt;[alias]
+        diff = diff --word-diff
+        a = apply --index
+        st = status
+        ci = commit
+        branch-name = !git for-each-ref --format=&#039;%(refname:short)&#039; `git symbolic-ref HEAD`
+        cd-root = rev-parse --show-cdup
+        branch-diff = !git format-patch --stdout $1 &amp;gt; `git cd-root``git branch-name`.patch&lt;/pre&gt;&lt;p&gt;The last three lines in my aliases creates a patch named after the branch. This is particularly useful because I tend to name my branches after the Drupal project and issue description and number. So the patches names are cleanly built as so: htmlpurifier-fixFormError-123456.patch. To use it from the branch, simply call git branch-diff 8.x&lt;/p&gt;
+&lt;p&gt;Another thing I like to do is remove old branches from time to time.  Here&#039;s a one liner I use: git branch -D $(git branch | awk  &#039;{ if ($0 !~ /7.x|8.x|7.x-1.x|7.x-2.x|8.x-1.x|8.x-2.x/) printf &quot;%s&quot;, $0 }&#039;)&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sat, 08 Jun 2013 17:51:53 +0000</pubDate>
+ <dc:creator>Lucas Hedding</dc:creator>
+ <guid isPermaLink="false">9 at http://mtechinformationsolutions.com</guid>
+</item>
+<item>
+ <title>Help 4 OK</title>
+ <link>http://mtechinformationsolutions.com/blogs/admin/help-4-ok</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;I had a wonderful chance to partake in an impromptu code sprint at DrupalCon Portland to help with the recovery of Moore, OK. I learned a lot; but more importantly I got to help with something that will have lasting impact on people recovering from the devestation of the recent tornado. At one point, there were 60 developers all hacking together on the same website. Right at 24 hours of development the site was launched. Features-wise, it met the immediate need and provided people involved in the recovery process a means to locate housing and ride-share into and out of the area.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Tue, 28 May 2013 20:50:30 +0000</pubDate>
+ <dc:creator>admin</dc:creator>
+ <guid isPermaLink="false">8 at http://mtechinformationsolutions.com</guid>
+</item>
+<item>
+ <title>Media Block for Parent-Child Entities</title>
+ <link>http://mtechinformationsolutions.com/blogs/lucas-hedding/media-block-parent-child-entities</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Here&#039;s the requirements. You have a parent-child relationship (one-to-many) between two content types. There are three media related fields on these content types. Your assignment is to display the first populated field in a block for a panels managed page. The order is 1) brightcove video 2) flickr photoset 3) file image. If one of the fields isn&#039;t populated on the child content type, find its parent and see if the parent has a field populated. The first hammer I picked up was Views. There is an add-on module called views_ifempty that seems to perfectly fit the bill.  However, it only works on the same node.  It doesn&#039;t chain up the request to a parent node.  So I went with strait PHP and the entity module&#039;s entity_metadata_wrapper.&lt;/p&gt;
+&lt;p&gt;The code is fairly strait forward, except for some fancy logic at the beginning on line 6 and a recursive callback down at the bottom on line 56. On line 6, if we haven&#039;t done a recursive callback, then $entity is NULL and we go ahead and process the node normally.  At the bottom, if we&#039;ve gone through all the logic to check the population of a field and we are on a child node, then call example_block_media() recursively with the parent node. This time when we check for the entity on line 6, it will not be empty.&lt;/p&gt;
+&lt;p&gt;The rest of the code just spits out appropriately themed HTML for brightcove videos, flickr photosets and photos.  Here&#039;s the full working code.&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class=&quot;drupal-gist-file&quot;&gt;
+&lt;pre type=&quot;&quot;&gt;/**
+ * Block call back for a media block.
+ */
+function example_block_media($entity = NULL, $child_title = NULL) {
+  $block = array();
+  $wrapper = empty($entity) ? entity_metadata_wrapper(&#039;node&#039;, menu_get_object()) : $entity;
+ 
+  if ($wrapper-&amp;gt;type-&amp;gt;value() == &#039;parent&#039; || $wrapper-&amp;gt;type-&amp;gt;value() == &#039;child&#039;) {
+    if ($value = $wrapper-&amp;gt;field_video_embed_code-&amp;gt;value(array(
+      &#039;sanitize&#039; =&amp;gt; TRUE
+    ))) {
+      $block[&#039;content&#039;] = theme(&#039;example_brightcove&#039;, array(
+        &#039;@videoPlayer&#039; =&amp;gt; $value[0],
+        &#039;videoID&#039; =&amp;gt; &#039;1234567910&#039;,
+        &#039;attributes&#039; =&amp;gt; array(
+          &#039;class&#039; =&amp;gt; &#039;example-media&#039;,
+        ),
+      ));
+    }
+    elseif ($value = $wrapper-&amp;gt;field_flickr-&amp;gt;value(array(
+      &#039;sanitize&#039; =&amp;gt; TRUE
+    ))) {
+      $block[&#039;content&#039;] = theme(&#039;example_flickr_set_slideshow&#039;, array(
+        &#039;set_id&#039; =&amp;gt; $value,
+        &#039;attributes&#039; =&amp;gt; array(
+          &#039;class&#039; =&amp;gt; &#039;example-media&#039;,
+        ),
+      ));
+    }
+    elseif ($wrapper-&amp;gt;field_files-&amp;gt;value()) {
+      $description = $wrapper-&amp;gt;field_files[0]-&amp;gt;description-&amp;gt;value() !== &#039;&#039; ? $wrapper-&amp;gt;field_files[0]-&amp;gt;description-&amp;gt;value()
+          : $description = $wrapper-&amp;gt;title-&amp;gt;value();
+ 
+      // If we call recursively, and no description is set, then use the title of the child
+      if (isset($child_title) &amp;amp;&amp;amp; $wrapper-&amp;gt;field_files[0]-&amp;gt;description-&amp;gt;value() == &#039;&#039;) {
+        $description = $child_title;
+      }
+ 
+      $description = filter_xss($description);
+ 
+      $block[&#039;content&#039;] = theme(&#039;image&#039;, array(
+        &#039;path&#039; =&amp;gt; $wrapper-&amp;gt;field_files[0]-&amp;gt;file-&amp;gt;url-&amp;gt;value(),
+        &#039;alt&#039; =&amp;gt; $description,
+        &#039;title&#039; =&amp;gt; $description,
+        &#039;width&#039; =&amp;gt; &#039;300px&#039;,
+        &#039;height&#039; =&amp;gt; &#039;220px&#039;,
+        &#039;attributes&#039; =&amp;gt; array(
+          &#039;class&#039; =&amp;gt; &#039;example-media&#039;,
+        ),
+      ));
+    }
+    elseif ($wrapper-&amp;gt;type-&amp;gt;value() == &#039;child&#039;) {
+      // Pass in the title of the child node to use as the title/alt
+      // text of the image (in case one wasn&#039;t set).
+      // field_parent_node_ref is a required field on child content type.
+      $block = example_block_media($wrapper-&amp;gt;field_parent_node_ref, $wrapper-&amp;gt;title-&amp;gt;value());
+    }
+  }
+  return $block;
+}&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Thu, 04 Apr 2013 18:32:20 +0000</pubDate>
+ <dc:creator>Lucas Hedding</dc:creator>
+ <guid isPermaLink="false">7 at http://mtechinformationsolutions.com</guid>
+</item>
+<item>
+ <title>Simple Site-wide Contact Form</title>
+ <link>http://mtechinformationsolutions.com/blogs/lucas-hedding/simple-site-wide-contact-form</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;If you want a real simple site contact form without a lot of extra work, here&#039;s something to try on for size.  Form fields shouldn&#039;t really be unset, so just hide them. I don&#039;t really want the site visitor to set the &quot;category&quot;, so that gets hidden.  I also decided that I want to always send a copy of the contact back to the requester, so I set the default value for the second field and hide it as well.&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class=&quot;drupal-gist-file&quot;&gt;
+&lt;pre type=&quot;&quot;&gt;/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function example_form_contact_site_form_alter(&amp;amp;$form, &amp;amp;$form_state, $form_id) {
+  $form[&#039;cid&#039;][&#039;#access&#039;] = FALSE;
+  $form[&#039;copy&#039;][&#039;#access&#039;] = FALSE;
+  $form[&#039;copy&#039;][&#039;#default_value&#039;] = TRUE;
+}&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Wed, 03 Apr 2013 19:35:24 +0000</pubDate>
+ <dc:creator>Lucas Hedding</dc:creator>
+ <guid isPermaLink="false">6 at http://mtechinformationsolutions.com</guid>
+</item>
+<item>
+ <title>Facet API Hash Alter</title>
+ <link>http://mtechinformationsolutions.com/blogs/lucas-hedding/facet-api-hash-alter</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;On a recent project using &lt;a href=&quot;http://www.drupal.org/project/apachesolr&quot;&gt;apachesolr&lt;/a&gt; and &lt;a href=&quot;http://www.drupal.org/project/facetapi&quot;&gt;facetapi&lt;/a&gt; I ran into an issue placing the facet blocks using &lt;a href=&quot;http://www.drupal.org/project/context&quot;&gt;context&lt;/a&gt;. We have a fairly typical dev, stage, prod setup. Each of the environment have different solr servers. Facet API uses the environment name or in its parlance, &quot;searcher&quot; as apart of the block hash. That causes an issue because every time you switch environments, the block hash changes and context breaks.&lt;/p&gt;
+&lt;p&gt;Solution? Apply a &lt;a href=&quot;http://drupal.org/node/1828396&quot;&gt;patch&lt;/a&gt; that gives you the ability to alter the hash and have essentially the same hash in all environments. Once you apply the patch, simply implement hook_facetapi_hash_alter(). Then you have full control of the hash and can happily place the facet block anywhere and not have a new environment throw you for a loop.&lt;/p&gt;
+&lt;p&gt;Full example:&lt;br /&gt;&lt;/p&gt;&lt;div class=&quot;drupal-gist-file&quot;&gt;
+&lt;pre type=&quot;php&quot;&gt;function example_facetapi_hash_alter(&amp;amp;$hash, $delta) {
+  preg_match(&#039;/(.+@)(.+?)(:.+)/&#039;, $delta, $matches);
+  $delta = $matches[1] . EXAMPLE_SEARCHER_ID . $matches[3];
+  $hash = substr(drupal_hash_base64($delta), 0, 32);
+  $hash = strtr($hash, array(&#039;-&#039; =&amp;gt; &#039;0&#039;, &#039;_&#039; =&amp;gt; &#039;1&#039;));
+}&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Thu, 07 Feb 2013 02:45:46 +0000</pubDate>
+ <dc:creator>Lucas Hedding</dc:creator>
+ <guid isPermaLink="false">4 at http://mtechinformationsolutions.com</guid>
+</item>
+<item>
+ <title>Apache Solr and External (non-Drupal) Content</title>
+ <link>http://mtechinformationsolutions.com/blogs/lucas-hedding/apache-solr-and-external-non-drupal-content</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;In a recent project, we had some non-Drupal content that needed to be indexed so we could expose that content to the &lt;a href=&quot;http://www.drupal.org/project/apachesolr&quot;&gt;apachesolr&lt;/a&gt; module for indexing with all the rest of Drupal created content.  There are several options to do this, including crawling using &lt;a href=&quot;https://nutch.apache.org&quot;&gt;nutch&lt;/a&gt;.  However in our case, the content is grabbed as xml content from a web service.   We already ha an xslt transform to convert it into html content to embed in the site.  In effect, we already had the raw content and knew all the &quot;entity ids&quot; so we didn&#039;t need to crawl.&lt;/p&gt;
+&lt;p&gt;Our problem became, &lt;i&gt;&quot;What is the best way to take the title and body text of these documents and throw them in the direction of solr&quot;&lt;/i&gt;.  Our solution involved using the ApacheSolrDocument class from apachesolr and a little but of drush magic.  Since there are several thousand of these external content documents, you&#039;ll see attention to performance throughout.&lt;/p&gt;
+&lt;p&gt;This solution is very extensible.  If we need to add a new content type, we just add two new function, &#039;example_entity_ids_new_entity_type&#039; &amp;amp; &#039;example_retrieve_documents_new_entity_type&#039;.  The first function creates an array of entity_ids that need to be created and deleted from solr.  The second function prepares a stdClass with all the required fields.  The last function, &#039;example_document_prepare&#039; transfers all the data from the stdClass array into the ApacheSolrDocument class.&lt;/p&gt;
+&lt;div class=&quot;drupal-gist-file&quot;&gt;
+&lt;pre type=&quot;&quot;&gt;&amp;lt;?php
+/**
+ * @file
+ * External indexing for non-drupal.
+ */
+
+/**
+ * @return array() $entity_ids
+ *   The list of documents that should be added/deleted from the solr index
+ */
+function example_entity_ids_external_content($force = FALSE) {
+  $entity_ids[&#039;delete_ids&#039;] = array();
+  $entity_ids[&#039;create_ids&#039;] = array();
+
+  // Retrieve the external_content entity ids using the SOAP veneer
+  $cid = &#039;example_documentIds&#039;;
+  $response = external_content_api(&#039;GetIDs&#039;, array(
+    &#039;localizationCode&#039; =&amp;gt; &#039;en-us&#039;
+  ), $cid);
+
+  // Cache the entity ids
+  cache_set($cid, $response, &#039;cache_external_content&#039;);
+
+  // Grab only the entity ids
+  $response_entity_ids = $response-&amp;gt;GetIDsResult-&amp;gt;string;
+
+  // Check if there are any new entities to index in solr
+  if ($force || $response_entity_ids != variable_get(&#039;example_external_content&#039;, array())) {
+    // Calculate the ids that need to be deleted from the index
+    $delete_entity_ids = variable_get(&#039;example_external_content&#039;, array());
+    $entity_ids[&#039;delete_ids&#039;] = array_diff($delete_entity_ids, $response_entity_ids);
+
+    // Assign list of entity ids that need to be created in the index
+    $entity_ids[&#039;create_ids&#039;] = response_entity_ids;
+
+    // Put away the new list of entity ids
+    variable_set(&#039;example_external_content&#039;, $response_entity_ids);
+  }
+
+  return $entity_ids;
+}
+/**
+ * This takes entity ids and returns a structured array of documents
+ * The document object should contain:
+ *   $document-&amp;gt;entity_id (string or long)
+ *   $document-&amp;gt;entity_type (string)
+ *   $document-&amp;gt;title (string)
+ *   $document-&amp;gt;body (string&amp;gt;
+ *   $document-&amp;gt;path (string)
+ *   $document-&amp;gt;language (optional string)
+ *
+ * @param string array $entity_ids
+ *   The external_content entity ids to index in solr
+ * @return array() $documents
+ *   stdClass array of documents to index
+ */
+function example_retrieve_documents_external_content($entity_ids = array()) {
+  $documents = array();
+  foreach ($entity_ids as $i =&amp;gt; $entity_id) {
+    $cid = $entity_id;
+    $response = external_content_api(&#039;GetDocument&#039;, array(
+      &#039;ext_id&#039; =&amp;gt; $entity_id,
+    ), $cid);
+    cache_set($cid, $response, &#039;cache_external_content&#039;);
+    $xml_document = new DOMDocument;
+    $xml_document-&amp;gt;loadXML($response-&amp;gt;GetRawDocument-&amp;gt;xml);
+    $xml_document = external_content_transform($xml_document, &#039;content&#039;);
+    $html_document = new DOMDocument();
+    // DOMDocument complains about malformed html, get rid of these errors
+    libxml_use_internal_errors(TRUE);
+    $html_document-&amp;gt;loadHTML($xml_document);
+    $xpath = new DOMXPath($html_document);
+
+    $document = new stdClass();
+    $document-&amp;gt;entity_id = $entity_id;
+    $document-&amp;gt;entity_type = &#039;external_content&#039;;
+    $document-&amp;gt;title = $xpath-&amp;gt;query(&#039;//h1[@id=&quot;ContentTitle&quot;]&#039;)-&amp;gt;item(0)-&amp;gt;nodeValue;
+    $document-&amp;gt;body = $xpath-&amp;gt;query(&#039;//div[contains(@class, &quot;BodySection&quot;)]&#039;)-&amp;gt;item(0)-&amp;gt;nodeValue;
+    $document-&amp;gt;path = &#039;external_content/&#039; . $entity_id;
+    $documents[] = $document;
+
+    // Helpful in dev environments where we don&#039;t really need to index every external_content document
+    if ($i == variable_get(&#039;example_external_content_limit&#039;, 100)) {
+      break;
+    }
+  }
+  return $documents;
+}
+
+/**
+ *
+ * @param array $documents
+ *   The stdClass array of documents to index
+ */
+function example_document_prepare($documents = array()) {
+  $solr_documents = array();
+
+  foreach ($documents as $document) {
+    // Since we can&#039;t use drupal&#039;s nid, make sure we get a mostly unique numeric entity id
+    // Still a possible chance of clashes since we have to trim the number to 18 positions
+    $entity_id_hash = substr(base_convert(sha1($document-&amp;gt;entity_id), 16, 10), 0, 18);
+
+    $solr_document = new ApacheSolrDocument();
+    $solr_document-&amp;gt;addField(&#039;id&#039;, apachesolr_document_id($entity_id_hash, $document-&amp;gt;entity_type));
+    $solr_document-&amp;gt;addField(&#039;site&#039;, url(NULL, array(
+      &#039;absolute&#039; =&amp;gt; TRUE
+    )));
+    $solr_document-&amp;gt;addField(&#039;hash&#039;, apachesolr_site_hash());
+
+    $solr_document-&amp;gt;addField(&#039;entity_id&#039;, $entity_id_hash);
+    $solr_document-&amp;gt;addField(&#039;entity_type&#039;, $document-&amp;gt;entity_type);
+    $solr_document-&amp;gt;addField(&#039;bundle&#039;, $document-&amp;gt;entity_type);
+    $solr_document-&amp;gt;addField(&#039;bundle_name&#039;, ucwords($document-&amp;gt;entity_type));
+    $solr_document-&amp;gt;addField(&#039;path&#039;, $document-&amp;gt;path);
+    $solr_document-&amp;gt;addField(&#039;url&#039;, url($document-&amp;gt;path, array(
+      &#039;absolute&#039; =&amp;gt; TRUE
+    )));
+    $solr_document-&amp;gt;addField(&#039;language&#039;, $document-&amp;gt;language ? $document-&amp;gt;language : LANGUAGE_NONE);
+    $solr_document-&amp;gt;addField(&#039;label&#039;, apachesolr_clean_text($document-&amp;gt;title));
+    $content = apachesolr_clean_text($document-&amp;gt;body);
+    $solr_document-&amp;gt;addField(&#039;content&#039;, $content);
+    $solr_document-&amp;gt;addField(&#039;teaser&#039;, truncate_utf8($content, 300, TRUE));
+    $solr_documents[$entity_id_hash] = $solr_document;
+  }
+  return $solr_documents;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The final step is to drive everything with a drush script.  Its a pretty strait forward script.  The only thing special about it is a means to &quot;force&quot; a re-index of all content.&lt;/p&gt;
+&lt;div class=&quot;drupal-gist-file&quot;&gt;
+&lt;pre type=&quot;&quot;&gt;&amp;lt;?php
+
+/**
+ * @file
+ *   example drush commands.
+ */
+
+/**
+ * Implementation of hook_drush_command().
+ *
+ * @return
+ *   An associative array describing your command(s).
+ */
+function example_drush_command() {
+  $items = array();
+
+  $items[&#039;example-solr-index&#039;] = array(
+    &#039;callback&#039; =&amp;gt; &#039;drush_example_index&#039;,
+    &#039;description&#039; =&amp;gt; dt(&#039;Indexes specified content.&#039;),
+    &#039;arguments&#039; =&amp;gt; array(
+      &#039;types&#039; =&amp;gt; dt(&#039;A space delimited list of entity types to be re-indexed.&#039;),
+    ),
+    &#039;options&#039; =&amp;gt; array(
+      &#039;force&#039; =&amp;gt; dt(&#039;Optional. Re-indexes all content of specified entity type.&#039;)
+    ),
+    &#039;examples&#039; =&amp;gt; array(
+      &#039;drush example-solr-index external-content&#039; =&amp;gt; dt(&#039;Indexes all un-indexed external-content entities.&#039;),
+      &#039;drush example-solr-index --force external-content&#039; =&amp;gt; dt(&#039;Re-indexes all external-content entities.&#039;),
+    ),
+    &#039;aliases&#039; =&amp;gt; array(
+      &#039;msi&#039;
+    ),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_drush_help().
+ *
+ * This function is called whenever a drush user calls
+ * &#039;drush help &amp;lt;name-of-your-command&amp;gt;&#039;
+ *
+ * @param string $section
+ *   A string with the help section (prepend with &#039;drush:&#039;)
+ *
+ * @return string
+ *   A string with the help text for your command.
+ */
+function example_drush_help($section) {
+  switch ($section) {
+    case &#039;drush:example-solr-index&#039;:
+      return dt(&quot;Indexes specified content. If you want to re-index all content, specify --force.&quot;);
+  }
+}
+
+/**
+ * Selectively (re)-index content from the solr index.
+ *
+ * Each argument is a filter on what to (re)-index .
+ * They are of the form entity (to (re)-index all content of that
+ * entity).
+ */
+function drush_example_index() {
+  module_load_include(&#039;inc&#039;, &#039;apachesolr&#039;, &#039;apachesolr.index&#039;);
+  module_load_include(&#039;inc&#039;, &#039;example&#039;, &#039;example_external_index&#039;);
+
+  $args = func_get_args();
+  $force = drush_get_option(&#039;force&#039;, FALSE);
+  $env_id = apachesolr_default_environment();
+
+  if (count($args) &amp;gt; 0) {
+    foreach ($args as $entity_type) {
+      // Retrieve the entity ids
+      $function_name = _example_function_name(&#039;example_entity_ids_&#039;, $entity_type);
+      $entity_ids = call_user_func($function_name, $force);
+
+      // Delete documents from index
+      foreach ($entity_ids[&#039;delete_ids&#039;] as $entity_id) {
+        apachesolr_index_delete_entity_from_index($env_id, $entity_type, $entity_id);
+      }
+
+      // Retrieve the new documents
+      $function_name = _example_function_name(&#039;example_retrieve_documents_&#039;, $entity_type);
+      $documents = call_user_func($function_name, $entity_ids[&#039;create_ids&#039;]);
+
+      // Prepare the new documents
+      $documents = example_document_prepare($documents);
+
+      // Force replacement of all index entries
+      if ($force) {
+        $docs_chunk = array_chunk($documents, 20, TRUE);
+        foreach ($docs_chunk as $docs) {
+          foreach ($docs as $entity_id =&amp;gt; $doc) {
+            apachesolr_index_delete_entity_from_index($env_id, $entity_type, $entity_id);
+          }
+          apachesolr_index_send_to_solr($env_id, $docs);
+        }
+        // Create the new index entries
+      }
+      else {
+        apachesolr_index_send_to_solr($env_id, $documents);
+      }
+    }
+  }
+  else {
+    drush_set_error(&#039;An entity type must be specified&#039;);
+  }
+
+  drush_print(t(&#039;Done (re)-indexing : &#039; . implode(&#039; &#039;, $args)));
+}
+
+function _example_function_name($prefix, $suffix) {
+  $function_name = $prefix . $suffix;
+  if (!is_callable($function_name)) {
+    throw new ErrorException(ucwords($suffix) . &#039; not implemented correctly.  Function missing: &#039; . $function_name,
+        E_USER_ERROR);
+  }
+  return $function_name;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Thu, 25 Oct 2012 21:18:58 +0000</pubDate>
+ <dc:creator>Lucas Hedding</dc:creator>
+ <guid isPermaLink="false">3 at http://mtechinformationsolutions.com</guid>
+</item>
+<item>
+ <title>Selenium, phpunit &amp; Drupal</title>
+ <link>http://mtechinformationsolutions.com/blogs/lucas-hedding/selenium-phpunit-drupal</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;I was on a project recently where I wrote tests using Selenium for a Drupal site. I chose Selenium over Drupal&#039;s SimpleTest to achieve greater cross-browser support. To get started, you&#039;ll need to install &lt;a href=&quot;http://www.phpunit.de/manual/current/en/installation.html&quot;&gt;PHPUnit&lt;/a&gt; and &lt;a href=&quot;http://www.phpunit.de/manual/current/en/selenium.html#selenium.installation&quot;&gt; PHPUnit_Selenium&lt;/a&gt;. For my example, you&#039;ll also want to install &lt;a href=&quot;http://jenkins-php.org/&quot;&gt;Jenkins customized for PHPUnit&lt;/a&gt; and &lt;a href=&quot;https://ant.apache.org/&quot;&gt;Apache Ant&lt;/a&gt;. Of course, don&#039;t forget to download &lt;a href=&quot;http://release.seleniumhq.org/selenium-ide/1.9.0/selenium-ide-1.9.0.xpi&quot;&gt;Selenium IDE for Firefox&lt;/a&gt;, &lt;a href=&quot;https://code.google.com/p/selenium/downloads/list&quot;&gt;selenium-server-standalone-2.x.x.jar&lt;/a&gt; and the &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/selenium-ide-php-formatters/&quot;&gt;PHP Formatter for Selenium IDE&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I should explain why I opted to go with pure PHPUnit&#039;s implementation of Selenium. It seems to have the greatest support and documentation. And our QA tester can build the initial script using the Selenium IDE and export it for use with PHPUnit. This means we can&#039;t use the cool features of JsonWireProtocol just yet, but there we should some time soon.&lt;/p&gt;
+&lt;h2&gt;Write the scripts&lt;/h2&gt;
+&lt;p&gt;I wrote a base class that includes some init functions. These are pretty universal to testing the Drupal site and allows me to develop my Unit tests with the assumption that they can run in any order. It resets cookies in the browser and sets the start of a test to a known location, the homepage.&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class=&quot;drupal-gist-file&quot;&gt;
+&lt;pre type=&quot;php&quot;&gt;&amp;lt;?php
+
+abstract class BaseTest extends PHPUnit_Extensions_SeleniumTestCase {
+
+  protected $autoStop = FALSE;
+
+  protected function setUp() {
+    $this-&amp;gt;setBrowserUrl(&#039;http://www.example.com&#039;);
+  }
+  /** 
+   * common commands required at the start of each test. These cannot be run in the setup 
+   * as they require the browser to be opened 
+   */
+  protected function init() {
+    $this-&amp;gt;clearAllCookies();
+    $this-&amp;gt;openHomePage();
+  }
+  /**
+   * Clears all cookies
+   */
+  private function clearAllCookies() {
+    $cookies = explode(&#039;;&#039;, $this-&amp;gt;getCookie());
+    foreach ($cookies as $cookie) {
+      $cookie_parts = explode(&#039;=&#039;, $cookie);
+      $this-&amp;gt;deleteCookie($cookie_parts[0], &#039;/&#039;);
+    }
+  }
+  /**
+   * Open the homepage and verifies we are in fact on the home page
+   */
+  private function openHomePage() {
+    $this-&amp;gt;open(&quot;/&quot;);
+    $this-&amp;gt;waitForPageToLoad(&quot;30000&quot;);
+    $this-&amp;gt;assertEquals(&quot;Home&quot;, $this-&amp;gt;getText(&quot;xpath=//h1[@id=&#039;page-title&#039;]&quot;));
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sat, 15 Sep 2012 03:14:09 +0000</pubDate>
+ <dc:creator>Lucas Hedding</dc:creator>
+ <guid isPermaLink="false">2 at http://mtechinformationsolutions.com</guid>
+</item>
+<item>
+ <title>Varnish - Basic Install</title>
+ <link>http://mtechinformationsolutions.com/blogs/lucas-hedding/varnish-basic-install</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2&gt;Steps to enable varnish on a server&lt;/h2&gt;
+&lt;p&gt;Install varnish per your platform&#039;s standard install method. I installed it on a debian based system so I just ran&lt;/p&gt;
+&lt;p&gt;sudo apt-get install varnish&lt;/p&gt;
+&lt;p&gt;You&#039;ll now need to provide a varnish configuration &amp;amp; vcl that is customized for Drupal. There are some options that should be set when you start the daemon. Other&#039;s should go in the vcl. In our environment, we setup the default.vcl to read in a backend.vcl that is different for each environment based on backedn IP addresses, etc and a drupal.vcl that is identical for all environments.&lt;br /&gt;&lt;/p&gt;&lt;div class=&quot;drupal-gist-file&quot;&gt;
+&lt;pre type=&quot;&quot;&gt;# Configuration file for varnish
+#
+# /etc/init.d/varnish expects the variable $DAEMON_OPTS to be set from this
+# shell script fragment.
+#
+
+# Maximum number of open files (for ulimit -n)
+NFILES=131072
+
+# Locked shared memory (for ulimit -l)
+# Default log size is 82MB + header
+MEMLOCK=82000
+
+# Maximum size of corefile (for ulimit -c). Default in Fedora is 0
+# DAEMON_COREFILE_LIMIT=&quot;unlimited&quot;
+
+# Set this to 1 to make init script reload try to switch vcl without restart.
+# To make this work, you need to set the following variables
+# explicit: VARNISH_VCL_CONF, VARNISH_ADMIN_LISTEN_ADDRESS,
+# VARNISH_ADMIN_LISTEN_PORT, VARNISH_SECRET_FILE, or in short,
+# use Alternative 3, Advanced configuration, below
+RELOAD_VCL=1
+
+# # Default address and port to bind to
+# # Blank address means all IPv4 and IPv6 interfaces, otherwise specify
+# # a host name, an IPv4 dotted quad, or an IPv6 address in brackets.
+VARNISH_LISTEN_ADDRESS=
+VARNISH_LISTEN_PORT=80
+#
+# # Telnet admin interface listen address and port
+VARNISH_ADMIN_LISTEN_ADDRESS=
+VARNISH_ADMIN_LISTEN_PORT=6082
+#
+# # Shared secret file for admin interface
+VARNISH_SECRET_FILE=/etc/varnish/secret
+#
+# http://www.lullabot.com/articles/varnish-multiple-web-servers-drupal
+# # The minimum number of worker threads to start
+VARNISH_MIN_THREADS=400
+#
+# http://www.lullabot.com/articles/varnish-multiple-web-servers-drupal
+# # The Maximum number of worker threads to start
+VARNISH_MAX_THREADS=1000
+#
+# # Idle timeout for worker threads
+VARNISH_THREAD_TIMEOUT=120
+# # Main configuration file.
+VARNISH_VCL_CONF=/etc/varnish/default.vcl
+#
+# # Cache file size: in bytes, optionally using k / M / G / T suffix,
+# # or in percentage of available disk space using the % suffix.
+VARNISH_STORAGE_SIZE=2G
+#
+# # Backend storage specification
+VARNISH_STORAGE=&quot;malloc,${VARNISH_STORAGE_SIZE}&quot;
+#
+# # Default TTL used when the backend does not specify one
+VARNISH_TTL=120
+#
+# # Other parameters for Varnish.
+VARNISH_CLI_TIMEOUT=&quot;cli_timeout=25&quot;
+VARNISH_SESS_TIMEOUT=&quot;sess_timeout=5&quot;
+VARNISH_SESS_WORKSPACE=&quot;sess_workspace=262144&quot;
+
+DAEMON_OPTS=&quot;-a ${VARNISH_LISTEN_ADDRESS}:${VARNISH_LISTEN_PORT} \
+             -f ${VARNISH_VCL_CONF} \
+             -T ${VARNISH_ADMIN_LISTEN_ADDRESS}:${VARNISH_ADMIN_LISTEN_PORT} \
+             -t ${VARNISH_TTL} \
+             -w ${VARNISH_MIN_THREADS},${VARNISH_MAX_THREADS},${VARNISH_THREAD_TIMEOUT} \
+             -u varnish -g varnish \
+             -S ${VARNISH_SECRET_FILE} \
+             -s ${VARNISH_STORAGE} \
+             -p ${VARNISH_CLI_TIMEOUT} \
+             -p ${VARNISH_SESS_TIMEOUT} \
+             -p ${VARNISH_SESS_WORKSPACE}&quot;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Steps to enable varnish modules&lt;/h2&gt;
+&lt;p&gt;Install several drupal modules to help manage the varnish caching.&lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;&lt;li&gt;Varnish -- provides a cache replacement for page cache and lets other modules communicate with the varnish servers admin interface.&lt;/li&gt;
+&lt;li&gt;Expire -- provides a means to expire the varnish cache when a node, entity, term, etc is edited.&lt;/li&gt;
+&lt;li&gt;Purge -- works with expire to ban items when they have expired.&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sat, 15 Sep 2012 03:04:03 +0000</pubDate>
+ <dc:creator>Lucas Hedding</dc:creator>
+ <guid isPermaLink="false">1 at http://mtechinformationsolutions.com</guid>
+</item>
+</channel>
+</rss>
+
+<!-- Page cached by Boost @ 2013-11-11 12:13:19, expires @ 2013-11-11 13:13:19, lifetime 1 hour -->

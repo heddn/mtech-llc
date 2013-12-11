@@ -1,0 +1,17 @@
+name = Custom MTech
+description = Custom module for mtechinformationsolutions.com
+package = Custom
+core = 7.x
+version = 1.x
+
+scripts[] = js/custom_mtech.js
+
+dependencies[] = context
+dependencies[] = views
+
+
+; Information added by drush on 2013-03-27
+version = ""
+project = "custom_mtech"
+datestamp = "1364414869"
+

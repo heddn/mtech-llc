@@ -1,0 +1,16 @@
+name = mtech main menu
+core = 7.x
+package = Features
+php = 5.2.4
+version = 1.x
+project = mtech_main_menu
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:1
+features[menu_custom][] = main-menu
+features[menu_links][] = main-menu:<front>
+features[menu_links][] = main-menu:blog/3
+features[menu_links][] = main-menu:contact
+features[menu_links][] = main-menu:node/5
+features[menu_links][] = main-menu:staff
+project path = sites/all/modules/features

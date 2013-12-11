@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the mtech_user feature.
+ */
+
+include_once 'mtech_user.features.inc';

@@ -1,0 +1,22 @@
+/* This file will hold styles that are loaded using the same media query as the narrow grid. */
+/* If you are using the default media queries provided by Omega, these styles will also
+ *  apply to the normal and widescreen layouts. You may override these styles in the normal 
+ *  and widescreen CSS files as appropriate. */
+#region-content, #region-sidebar-first, #region-sidebar-second, #region-footer-second {
+  margin: 35px 0 0;
+}
+#zone-content-wrapper, #zone-postscript-wrapper {
+  background-color: #EFEFEF;
+}
+#region-content, #region-sidebar-first, #region-sidebar-second {
+  background-color: white;
+  border: 1px solid #CFCFCF;
+  border-bottom-style: none;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+div.advertisement {
+  float: left;
+  width: 525px;
+}
