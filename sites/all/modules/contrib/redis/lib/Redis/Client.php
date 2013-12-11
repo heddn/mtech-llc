@@ -85,11 +85,21 @@ class Redis_Client {
    * @return Redis_Client_Interface
    */
   public static function getClientInterface() {
-    if (!isset(self::$_clientInterface)) {
-      global $conf;
+    global $conf;
 
-      if ($clientName = variable_get('redis_client_interface', FALSE)) {
-        $className = self::getClass(self::REDIS_IMPL_CLIENT, $clientName);
+    if (!isset(self::$_clientInterface)) {
+      if (!empty($conf['redis_client_interface'])) {
+        $className = self::getClass(self::REDIS_IMPL_CLIENT, $conf['redis_client_interface']);
+        self::$_clientInterface = new $className();
+      }
+      else if (class_exists('Predis\Client')) {
+        // Transparent and abitrary preference for Predis library.
+        $className = self::getClass(self::REDIS_IMPL_CLIENT, 'Predis');
+        self::$_clientInterface = new $className();
+      }
+      else if (class_exists('Redis')) {
+        // Fallback on PhpRedis if available.
+        $className = self::getClass(self::REDIS_IMPL_CLIENT, 'PhpRedis');
         self::$_clientInterface = new $className();
       }
       else {
@@ -119,18 +129,9 @@ class Redis_Client {
       global $conf;
 
       // Always prefer socket connection.
-      if (!empty($conf['redis_client_socket'])) {
-        $host = $conf['redis_client_socket'];
-        $port = NULL;
-      }
-      else {
-        $host = isset($conf['redis_client_host']) ? $conf['redis_client_host'] : self::REDIS_DEFAULT_HOST;
-        $port = isset($conf['redis_client_port']) ? $conf['redis_client_port'] : self::REDIS_DEFAULT_PORT;
-      }
-
       self::$_client = self::getClientInterface()->getClient(
-        $host,
-        $port,
+        isset($conf['redis_client_host']) ? $conf['redis_client_host'] : self::REDIS_DEFAULT_HOST,
+        isset($conf['redis_client_port']) ? $conf['redis_client_port'] : self::REDIS_DEFAULT_PORT,
         isset($conf['redis_client_base']) ? $conf['redis_client_base'] : self::REDIS_DEFAULT_BASE,
         isset($conf['redis_client_password']) ? $conf['redis_client_password'] : self::REDIS_DEFAULT_PASSWORD);
     }
@@ -161,6 +162,14 @@ class Redis_Client {
     }
 
     return $className;
+  }
+
+  /**
+   * For unit testing only reset internals.
+   */
+  static public function reset() {
+    self::$_clientInterface = null;
+    self::$_client = null;
   }
 }
 
