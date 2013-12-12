@@ -5,6 +5,13 @@
  */
 
 /**
+ * Implements hook_menu_alter().
+ */
+function custom_mtech_menu_alter(&$items) {
+  $items['node']['page callback'] = 'custom_mtech_empty_front_page_callback';
+}
+
+/**
  * Implements hook_form_alter().
  */
 function custom_mtech_form_alter(&$form, &$form_state, $form_id) {
@@ -140,4 +147,12 @@ function _custom_mtech_block_copyright() {
   $block['content'] = '<div class="copyright">&copy; ' . $copyright_text . '</div>';
 
   return $block;
+}
+
+/**
+ * Menu callback: Front page.
+ */
+function custom_mtech_empty_front_page_callback() {
+  drupal_set_title('');
+  return array();
 }

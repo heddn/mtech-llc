@@ -1,0 +1,7 @@
+Core
+
+n/a
+
+Contrib:
+
+socialmedia: Adds g+ share: https://drupal.org/comment/7771309#comment-7771309

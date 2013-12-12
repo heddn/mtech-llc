@@ -28,3 +28,10 @@ function custom_mtech_update_7001() {
   $node = node_submit($node); // Prepare node for saving
   node_save($node);
 }
+
+/**
+ * Implements hook_update_N()
+ */
+function custom_mtech_update_7002() {
+  module_enable(array('banner', 'oauth_common', 'twitter', 'diff', 'flexslider', 'flexslider_views', 'field_redirection'));
+}

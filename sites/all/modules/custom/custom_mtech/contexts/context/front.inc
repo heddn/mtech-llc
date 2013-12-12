@@ -15,11 +15,23 @@ $context->conditions = array(
 $context->reactions = array(
   'block' => array(
     'blocks' => array(
-      'custom_mtech-advertisement' => array(
-        'module' => 'custom_mtech',
-        'delta' => 'advertisement',
-        'region' => 'branding',
+      'views-portfolio-block' => array(
+        'module' => 'views',
+        'delta' => 'portfolio-block',
+        'region' => 'content',
         'weight' => '-10',
+      ),
+      'views-frontpage_blog-block_1' => array(
+        'module' => 'views',
+        'delta' => 'frontpage_blog-block_1',
+        'region' => 'content',
+        'weight' => '-9',
+      ),
+      'views-mtech_tweets-block' => array(
+        'module' => 'views',
+        'delta' => 'mtech_tweets-block',
+        'region' => 'content',
+        'weight' => '-8',
       ),
     ),
   ),

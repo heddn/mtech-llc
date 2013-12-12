@@ -8,6 +8,7 @@ scripts[] = js/custom_mtech.js
 
 dependencies[] = context
 dependencies[] = views
+dependencies[] = twitter
 
 
 ; Information added by drush on 2013-03-27
