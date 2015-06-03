@@ -69,7 +69,6 @@
     <option indent="2" />
     <option maxerr="50" />
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="5.3.0" />
   <component name="PhpServers">
     <option name="servers">
       <server host="http://drupal.sandbox" name="drupal.sandbox" use_path_mappings="true" />
@@ -114,4 +113,3 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
 </project>
-
