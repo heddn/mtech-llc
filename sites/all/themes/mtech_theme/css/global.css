@@ -160,3 +160,26 @@ div.field-name-field-employee-role {
 div.view-staff table.views-view-grid {
   width: 99%;
 }
+
+/*
+CUSTOM
+*/
+
+footer .widgets-style-horizontal {
+    margin-left: 5px;
+}
+
+#block-custom-mtech-copyright h2 {
+    display: none;
+}
+#block-custom-mtech-copyright div.copyright {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 180px;
+    /*background-color: #000066;*/
+}
+#block-widgets-s-socialmedia-share-default {
+    float: right;
+    display: block;
+}
