@@ -161,25 +161,23 @@ div.view-staff table.views-view-grid {
   width: 99%;
 }
 
-/*
-CUSTOM
-*/
-
-footer .widgets-style-horizontal {
-    margin-left: 5px;
+/* Footer */
+footer .widgets-set-horizontal {
+  margin: 0 auto;
+  width: 150px;
+}
+footer .widgets-element-horizontal {
+  margin: 0 0 5px 5px;
+}
+div.block-custom-mtech-copyright .copyright {
+  margin: 0 auto;
+  width: 180px;
 }
 
-#block-custom-mtech-copyright h2 {
-    display: none;
+/* Front page - portfolio */
+body.front .view-portfolio .field-name-field-image {
+  float: left;
 }
-#block-custom-mtech-copyright div.copyright {
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    width: 180px;
-    /*background-color: #000066;*/
-}
-#block-widgets-s-socialmedia-share-default {
-    float: right;
-    display: block;
+body.front .view-portfolio figcaption {
+  float: right;
 }
