@@ -155,16 +155,11 @@ div.username {
 }
 div.field-name-field-employee-role {
   font-size: 1.3em;
-  font-weight: 450;
+  font-weight: 400;
 }
 div.view-staff table.views-view-grid {
   width: 99%;
 }
-
-/*
-CUSTOM
-*/
-
 footer .widgets-style-horizontal {
     margin-left: 5px;
 }
@@ -177,9 +172,14 @@ footer .widgets-style-horizontal {
     display: block;
     text-align: center;
     width: 180px;
-    /*background-color: #000066;*/
 }
 #block-widgets-s-socialmedia-share-default {
     float: right;
     display: block;
+}
+#block-search-form {
+    float: right;
+}
+div.view-id-portfolio div.field-name-field-image img {
+    float: right;
 }
