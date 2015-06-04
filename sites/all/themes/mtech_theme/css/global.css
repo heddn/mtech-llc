@@ -155,7 +155,7 @@ div.username {
 }
 div.field-name-field-employee-role {
   font-size: 1.3em;
-  font-weight: 450;
+  font-weight: 400;
 }
 div.view-staff table.views-view-grid {
   width: 99%;
@@ -179,5 +179,10 @@ body.front .view-portfolio .field-name-field-image {
   float: left;
 }
 body.front .view-portfolio figcaption {
+  float: right;
+}
+
+/* Search form */
+#block-search-form {
   float: right;
 }
