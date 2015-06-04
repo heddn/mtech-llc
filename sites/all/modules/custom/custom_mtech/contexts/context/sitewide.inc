@@ -27,12 +27,6 @@ $context->reactions = array(
         'region' => 'user_second',
         'weight' => '-10',
       ),
-      'views-banner-block' => array(
-        'module' => 'views',
-        'delta' => 'banner-block',
-        'region' => 'branding',
-        'weight' => '-10',
-      ),
       'widgets-s_socialmedia_share-default' => array(
         'module' => 'widgets',
         'delta' => 's_socialmedia_share-default',
